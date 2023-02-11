@@ -1,14 +1,22 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import ProductScreen from './src/screens/ProductScreen';
+import ShoppingCartScreen from './src/screens/ShoppingCartScreen';
 
 const App = () => {
-  console.log('hello shubham');
+  const isDarkMode = useColorScheme() === 'dark';
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
   return (
-    <View>
-      <AntDesign name="customerservice" size={30} color="#900" />
-      <Text>Hello</Text>
-    </View>
+    <SafeAreaView style={backgroundStyle}>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      {/* <HomeScreen /> */}
+      {/* <ProductScreen /> */}
+      <ShoppingCartScreen />
+    </SafeAreaView>
   );
 };
 
